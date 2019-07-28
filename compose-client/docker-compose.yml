@@ -3,19 +3,18 @@ version: '3'
 services:
     cron_echo:
         build: ./echo
-        ports: 
-            - "18080:80"
         volumes:
             - ./log/cron_echo:/tmp/cron_echo
+        networks:
+            - fluent_test
     fluent_sender:
         build: ./fluentd
         volumes:
             - ./log/cron_echo:/tmp/cron_echo
             - ./fluentd/config:/fluentd/etc
             - ./log/fluentd_sender:/fluentd/log
-    fluent_server:
-        build: ./fluentd_server
-        volumes:
-            - ./log/received:/var/log/cron_echo
-            - ./fluentd_server/config:/fluentd/etc
-            - ./log/fluentd_server:/fluentd/log
+        networks:
+            - fluent_test
+networks:
+    fluent_test:
+        external: true

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    fluent_server:
+        build: ./fluentd_server
+        ports: 
+            - "24224:24224"
+            - "24224:24224/udp"
+        volumes:
+            - ./log/received:/var/log/cron_echo
+            - ./fluentd_server/config:/fluentd/etc
+            - ./log/fluentd_server:/fluentd/log
+        networks:
+            - fluent_test
+networks:
+    fluent_test:
+        external: true
