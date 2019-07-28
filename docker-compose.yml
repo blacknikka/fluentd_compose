@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    cron_echo:
+        build: ./echo
+        ports: 
+            - "18080:80"
+        volumes:
+            - ./log/cron_echo:/tmp/cron_echo
+    fluent_sender:
+        build: ./fluentd
+    fluent_server:
+        build: ./fluentd_server
