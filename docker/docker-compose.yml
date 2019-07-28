@@ -9,16 +9,12 @@ services:
             - ./log/cron_echo:/tmp/cron_echo
     fluent_sender:
         build: ./fluentd
-        environment:
-            - 'FLUENTD_CONF=sender_fluentd.conf'
         volumes:
             - ./log/cron_echo:/tmp/cron_echo
             - ./fluentd/config:/fluentd/etc
             - ./log/fluentd_sender:/fluentd/log
     fluent_server:
         build: ./fluentd_server
-        environment:
-            - 'FLUENTD_CONF=server_fluentd.conf'
         volumes:
             - ./log/received:/var/log/cron_echo
             - ./fluentd_server/config:/fluentd/etc
