@@ -3,4 +3,3 @@ SHELL = /bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=""
 * * * * * dev-user /usr/bin/date >> /tmp/cron_echo/crontest.txt
-

@@ -1,0 +1,1 @@
+* * * * * dev-user /bin/bash /etc/cron.d/cron_echo.sh >> /tmp/cron_echo/crontest.txt
