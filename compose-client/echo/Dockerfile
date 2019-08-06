@@ -19,5 +19,6 @@ RUN sed -i -e '/pam_loginuid.so/s/^/#/' /etc/pam.d/crond
 # scriptの保存
 ADD cron.d /etc/cron.d/
 RUN chmod 0644 /etc/cron.d/*
+RUN chmod 0755 /etc/cron.d/cron_echo.sh
 
 CMD crond && tail -f /dev/null
